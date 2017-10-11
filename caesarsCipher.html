@@ -5,42 +5,28 @@
     </head>
     <body>
         <h1>
-            Check the Longest word in console.log with longestWord("sentence")
+            Check the Caesars Cipher in console.log with caesarCipher("sentence")
         </h1>
 
         <script>
             //Basic level
-            // function longestWord(sentence) {
-            //     sentence = sentence.split(' ');
-            //     var longest = 0;
-            //
-            //     for (var i = 0; i < sentence.length; i++) {
-            //         if (sentence[i].length > longest) {
-            //             longest = sentence[i].length;
-            //         }
-            //     }
-            //
-            //     return longest;
-            // }
+            function caesarsCipher(sentence) {
+                return sentence.split('').map.call(sentence, function(char) {
+                    x = char.charCodeAt(0);
 
-            //Intermediate level
-            // function longestWord(sentence) {
-            //     return sentence.split(' ').reduce(function(x, y){
-            //         return Math.max(x, y.length);
-            //     }, 0);
-            // }
+                    if (x < 65 || x > 90) {
+                        return String.fromCharCode(x);
+                    }
 
-            //With sort
-            function longestWord(sentence) {
-                sentence = sentence.split(' ');
+                    if (x <= 77) {
+                        return String.fromCharCode(x + 13);
+                    }
 
-                sentence.sort(function(a, b) {
-                    return b.length - a.length;
-                });
-
-                // return sentence[0].length;
-                return sentence;
+                    return String.fromCharCode(x - 13);
+                }).join('');
             }
+
+            
         </script>
     </body>
 </html>

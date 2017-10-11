@@ -10,23 +10,36 @@
 
         <script>
             //Basic level
+            // function caesarsCipher(sentence) {
+            //     return sentence.split('').map.call(sentence, function(char) {
+            //         x = char.charCodeAt(0);
+            //
+            //         if (x < 65 || x > 90) {
+            //             return String.fromCharCode(x);
+            //         }
+            //
+            //         if (x <= 77) {
+            //             return String.fromCharCode(x + 13);
+            //         }
+            //
+            //         return String.fromCharCode(x - 13);
+            //     }).join('');
+            // }
+
+            //Intermediate level
             function caesarsCipher(sentence) {
-                return sentence.split('').map.call(sentence, function(char) {
-                    x = char.charCodeAt(0);
+                var arr = [];
+                var regEx = /[A-Z]/;
 
-                    if (x < 65 || x > 90) {
-                        return String.fromCharCode(x);
+                for (var i = 0; i < sentence.length; i++) {
+                    if (regEx.test(sentence[i])) {
+                        arr.push((sentence[i].charCodeAt() - 65 + 13) % 26 + 65);
+                    } else {
+                        arr.push(sentence[i].charCodeAt());
                     }
-
-                    if (x <= 77) {
-                        return String.fromCharCode(x + 13);
-                    }
-
-                    return String.fromCharCode(x - 13);
-                }).join('');
+                }
+                return String.fromCharCode.apply(String, arr);
             }
-
-            
         </script>
     </body>
 </html>
